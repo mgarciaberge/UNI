@@ -1,18 +1,24 @@
 #importamos de la libreria math la funcion raiz cuadrada
-from curses.ascii import isdigit
+#from curses.ascii import isdigit
 from math import sqrt
 
 print("Programa para el cálculo de ecuaciones de segundo grado (ax^2 + bx + c)")
 
-a = float(input("Introduce el coeficiente de a: "))
-#if type(a) not in (int, float):
-#    print("a debe ser numérico")
-b = float(input("Introduce el coeficiente de b: "))
-#if type(b) not in (int, float):
-#    print("b debe ser numérico")
-c = float(input("Introduce el coeficiente de c: "))
-#if type(c) not in (int, float):
-#    print("c debe ser numérico")
+#intentamos controlar que el valor introducido sea un valor númerico y si no lo es que el 
+#programa nos avise.
+
+try:
+    a = float(input("Introduce el coeficiente de a: "))
+except:
+    print("a debe ser numérico")
+try:
+    b = float(input("Introduce el coeficiente de b: "))
+except:
+    print("b debe ser numérico")
+try:
+    c = float(input("Introduce el coeficiente de c: "))
+except:
+    print("c debe ser numérico")
 
 if a != 0:
     disc = b**2 - 4*a*c
