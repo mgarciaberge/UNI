@@ -1,5 +1,5 @@
 import os
-from math import pi
+from math import pi, sqrt
 import turtle
 from turtle import Screen, Turtle
 
@@ -10,10 +10,8 @@ def main():
         print("Elige una opción de menú:")
         print("Elige 1 para Operaciones con Circulos")
         print("Elige 2 para Operaciones con Cuadrados")
-        print("Elige 3 para Operaciones con Pentagonos")
-        print("Elige 4 para Operaciones con Hexagonos")
-        print("Elige 5 para Operaciones con Octagonos")
-
+        print("Elige 3 para Operaciones con Triangulos Equilateros")
+              
         opcion = input ("Haz tu elección: ")
 
         if opcion == "1":
@@ -23,14 +21,8 @@ def main():
             print ("Escogiste Cuadrado")
             menu_cuadrado ()
         elif opcion == "3":
-            print ("Escogiste Pentagono")
-            menu_pentagono ()
-        elif opcion == "4":
-            print ("Escogiste Hexagono")
-            menu_hexagono ()
-        elif opcion == "5":
-            print ("Escogiste Octogono")
-            menu_octogono ()
+            print ("Escogiste Triangulo")
+            menu_triangulo ()
         else:
             print("Selección no válida. Vuelve a intertarlo.")
             main()
@@ -178,19 +170,77 @@ def menu_cuadrado():
     main()
 
   
-#def menu_pentagono():
-#    print("Pintamos un Pentagono")
-#    #instucciones de a la tortuga pera pintar
-#    main()
-#def menu_hexagono():
-#    print("Pintamos un Hexagono")
-#    #instucciones de a la tortuga pera pintar
-#    main()
-#def menu_octogono():
-#    print("Pintamos un Octagono")
-#    #instucciones de a la tortuga pera pintar
-#    main()
+def menu_triangulo():
+    #limpiamos pantalla
+    os.system ("clear")
+    #definición de funciones que calculan
+    def area_triangulo(base,altura):
+        A = (base*altura)/2
+        return A
+    def perimetro_triangulo(base):
+        P = 3 * base
+        return P
+    def dibujar_triangulo(base):
+          
+        #configuramos tortuga
+        tt=turtle
+        tt.bgcolor('black')
+        tt.speed(100)
+        tt.pensize(1)
+        tt.color('red')
+        tt.left(120)
+        tt.forward(base)
+        tt.left(120)
+        tt.forward(base)
+        tt.left(120)
+        tt.forward(base)
+        tt.hideturtle()
+
+        #creamos la pantalla 
+        pantalla = Screen()
+        #definimos la ventana
+        pantalla.setup(500,500)
+        pantalla.screensize(475,475)
+        #finalizamos la ejecución de la aplicación haciendo clic
+        pantalla.exitonclick()
+
+        main()
+
+    #estructura del menú para escoger la función a calcular
+    opcion_triangulo = '0'
+    base = float(input("Introduce la base del triangunlo equilátero: "))
+    altura = float(base *(sqrt(3)/2))
+    while opcion_triangulo == '0':
+        print("Menú de operaciones con Triangulos")
+        print("Opcion 1. Calcula el Área")
+        print("Opcion 2. Calcula el Perímetro")
+        print("Opcion 3. Dibuja el triangulo")
+
+        opcion_triangulo = input ("Haz tu elección: ")
+
+        if opcion_triangulo == "1":
+            os.system ("clear")
+            print ("Escogiste Calcular el Area")
+            area = float(area_triangulo (base,altura))
+            print (f"El área de un triangulo de base {base} es {round(area,2)}")
+
+        elif opcion_triangulo == "2":
+            os.system ("clear")
+            print ("Escogiste Calcular el Perímetro")
+            #perimetro_triangulo (base)
+            perimetro = float(perimetro_triangulo(base))
+            print (f"El perímetro de un triangulo de base {base} es {round(perimetro,2)} ")
+
+        elif opcion_triangulo == "3":
+            os.system ("clear")
+            print ("Dibujar un triangulo")
+            dibujar_triangulo (base)
+
+        else:
+            print("Selección no válida. Vuelve a intertarlo.")
+            
+
+    #volvemos a la función principal
+    main()
 
 main()
-
-
